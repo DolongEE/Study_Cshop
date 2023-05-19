@@ -1,0 +1,91 @@
+
+
+DLL_LinkedList<int> c = new DLL_LinkedList<int>();
+
+        void Start()
+        {
+            int i = 0;
+            int count = 0;
+            DLL_Node<int> newNode = null;
+            DLL_Node<int> current = null;
+
+            for (i = 0; i < 5; i++)
+            {
+                newNode = c.CreateNewNode(i);
+                c.AppendNode(newNode);
+            }
+
+            for (i = 0; i < c._nodeCurrentCount; i++)
+            {
+                current = c.GetNodeAt(i);
+                Debug.Log($"List[{i}] = {current.nodeData}");
+            }
+
+            current = c.GetNodeAt(2);
+            newNode = c.CreateNewNode(3000);
+            c.InsertAfter(current, newNode);
+
+            for (i = 0; i < c._nodeCurrentCount; i++)
+            {
+                current = c.GetNodeAt(i);
+                Debug.Log($"List[{i}] = {current.nodeData}");
+            }
+
+            count = c._nodeCurrentCount;
+
+            for (i = 0; i < count; i++)
+            {
+                current = c.GetNodeAt(0);
+
+
+                if (current != null)
+                {
+                    c.RemoveNode(current);
+                }
+            }
+
+            for (i = 0; i < c._nodeCurrentCount; i++)
+            {
+                current = c.GetNodeAt(i);
+                Debug.Log($"List[{i}] = {current.nodeData}");
+            }
+        }
+=============================================================================
+CircularDoublyLinkedList<int> c = new CircularDoublyLinkedList<int>();
+
+        void Start ()
+        {
+            int i = 0;
+            int count = 0;
+            CDLL_Node<int> newNode = null;
+            CDLL_Node<int> current = null;
+
+            for (i = 0; i < 5; i++)
+            {
+                newNode = c.CreateNewNode(i);
+                c.AppendNode(newNode);
+            }            
+
+            current = c.GetNodeAt(2);
+            newNode = c.CreateNewNode(3000);
+            c.InsertAfter(current, newNode);
+
+            count = c._nodeCurrentCount;
+
+            for (i = 0; i < count; i++)
+            {
+                current = c.GetNodeAt(0);
+
+
+                if (current != null)
+                {
+                    c.RemoveNode(current);
+                }
+            }
+
+            for (i = 0; i < c._nodeCurrentCount; i++)
+            {
+                current = c.GetNodeAt(i);
+                Debug.Log($"List[{i}] = {current.nodeData}");
+            }
+        }
