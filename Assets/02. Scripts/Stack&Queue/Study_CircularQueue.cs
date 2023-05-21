@@ -88,7 +88,7 @@ namespace Circular.Queue
         //데이터가 다 찼는지 체크
         public bool IsCapacityFull()
         {
-            if(_frontIndex <= _rearIndex)
+            if(_frontIndex < _rearIndex)
             {
                 return _rearIndex - _frontIndex == _queueCapacity;
             }
