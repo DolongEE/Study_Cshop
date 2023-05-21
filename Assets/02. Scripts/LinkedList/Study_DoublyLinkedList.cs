@@ -25,13 +25,9 @@ namespace Doubly.Linked.List
         //리스트 첫 번째에 있는 노드 정보
         public DLL_Node<T> _firstNode { get; private set; }
 
-        //리스트 마지막에 있는 노드 정보
-        public DLL_Node<T> _lastNode { get; private set; }
-
         public DLL_LinkedList()
         {
             this._firstNode = null;
-            this._lastNode = null;
         }
 
         //새로운 노드 생성 함수
@@ -55,13 +51,22 @@ namespace Doubly.Linked.List
             if(_firstNode == null)
             {
                 _firstNode = newNode;
-                _lastNode = newNode;
             }
             else
             {
-                //마지막 노드에 새로운 노드 추가
-                _lastNode.nextNode = newNode;
-                newNode.prevNode = _lastNode;
+                //맨뒤 노드를 첫번째 노드부터 순차적으로 탐색
+                DLL_Node<T> lastNode = _firstNode;
+                for(int i = 0; i< _nodeCurrentCount - 1 ; i++)
+                {
+                    lastNode = lastNode.nextNode;
+                    if(lastNode.nextNode == null) 
+                    {
+                        break;
+                    }
+                }
+
+                lastNode.nextNode = newNode;
+                newNode.prevNode = lastNode;
             }
 
             _nodeCurrentCount++;
@@ -126,7 +131,7 @@ namespace Doubly.Linked.List
             DLL_Node<T> currentNode = _firstNode;
 
             //찾으려는 노드 위치만큼 반복
-            for (int i = 0; i < index && currentNode != null; i++)
+            for (int i = 0; i < index; i++)
             {
                 currentNode = currentNode.nextNode;
             }
@@ -138,57 +143,6 @@ namespace Doubly.Linked.List
 
     public class Study_DoublyLinkedList : MonoBehaviour
     {
-        DLL_LinkedList<int> c = new DLL_LinkedList<int>();
-
-        void Start()
-        {
-            int i = 0;
-            int count = 0;
-            DLL_Node<int> newNode = null;
-            DLL_Node<int> current = null;
-
-            for (i = 0; i < 5; i++)
-            {
-                newNode = c.CreateNewNode(i);
-                c.AppendNode(newNode);
-            }
-
-            for (i = 0; i < c._nodeCurrentCount; i++)
-            {
-                current = c.GetNodeAt(i);
-                Debug.Log($"List[{i}] = {current.nodeData}");
-            }
-
-            current = c.GetNodeAt(2);
-            newNode = c.CreateNewNode(3000);
-            c.InsertAfter(current, newNode);
-
-            for (i = 0; i < c._nodeCurrentCount; i++)
-            {
-                current = c.GetNodeAt(i);
-                Debug.Log($"List[{i}] = {current.nodeData}");
-            }
-
-            count = c._nodeCurrentCount;
-
-            for (i = 0; i < count; i++)
-            {
-                current = c.GetNodeAt(0);
-
-
-                if (current != null)
-                {
-                    c.RemoveNode(current);
-                }
-            }
-
-            for (i = 0; i < c._nodeCurrentCount; i++)
-            {
-                current = c.GetNodeAt(i);
-                Debug.Log($"List[{i}] = {current.nodeData}");
-            }
-        }
-
-
+      
     }
 }

@@ -1,0 +1,100 @@
+LeftChildRrightSiblingTree<char> t = new LeftChildRrightSiblingTree<char>();
+        
+        void Start()
+        {
+            Node<char> root = t.CreateNode('A');
+            Node<char> b = t.CreateNode('B');
+            Node<char> c = t.CreateNode('C');
+            Node<char> d = t.CreateNode('D');
+            Node<char> e = t.CreateNode('E');
+            Node<char> f = t.CreateNode('F');
+            Node<char> g = t.CreateNode('G');
+            Node<char> h = t.CreateNode('H');
+            Node<char> i = t.CreateNode('I');
+            Node<char> j = t.CreateNode('J');
+            Node<char> k = t.CreateNode('K');
+
+            t.AddChildNode(root, b);
+                t.AddChildNode(b, c);
+                t.AddChildNode(b, d);
+                    t.AddChildNode(d, e);
+                    t.AddChildNode(d, f);
+
+            t.AddChildNode(root, g);
+                t.AddChildNode(g, h);
+
+            t.AddChildNode(root, i);
+                t.AddChildNode(i, j);
+                    t.AddChildNode(j, k);
+
+            t.PrintTree(root, 0);
+
+        }
+=======================================================================
+SimpleBinaryTree<char> t = new SimpleBinaryTree<char>();
+
+        void Start()
+        {
+            Node<char> a = t.CreateNode('A');
+            Node<char> b = t.CreateNode('B');
+            Node<char> c = t.CreateNode('C');
+            Node<char> d = t.CreateNode('D');
+            Node<char> e = t.CreateNode('E');
+            Node<char> f = t.CreateNode('F');
+            Node<char> g = t.CreateNode('G');
+
+            a.leftNode = b;
+            b.leftNode = c;
+            b.rightNode = d;
+
+            a.rightNode = e;
+            e.leftNode = f;
+            e.rightNode = g;
+
+            t.PreorderPrintTree(a,0);
+            Debug.Log("=============================================");
+            t.InorderPrintTree(a,0);
+            Debug.Log("=============================================");
+            t.PostorderPrintTree(a, 0);
+        }
+========================================================================
+ExpressionBinaryTree<char> t = new ExpressionBinaryTree<char> ();
+
+        Node<char> root = null;
+        void Start()
+        {
+            char[] postfixExpression = { '7', '1', '*', '5', '2', '-', '/' };
+
+            root = t.BuildExpressionTree(postfixExpression, root, postfixExpression.Length);
+
+            t.PreorderPrintTree(root, 0);
+            Debug.Log("=========================\n");
+            t.InorderPrintTree(root, 0);
+            Debug.Log("=========================\n");
+            t.PostorderPrintTree(root, 0);
+
+            Debug.Log("=========================\n");
+            Debug.Log($"Evaulation Result : {t.Evaluate(root)}\n");
+        }
+========================================================================
+DisjointSet<int> d = new DisjointSet<int> ();
+
+        void Start()
+        {
+            Node<int> set1 = d.MakeSet(1);
+            Node<int> set2 = d.MakeSet(2);
+            Node<int> set3 = d.MakeSet(3);
+            Node<int> set4 = d.MakeSet(4);
+
+            Debug.Log($"\tset1 == set2 : {d.FindSet(set1) == d.FindSet(set2)}\n");
+
+            d.UnionSet(set1, set3);
+            Debug.Log($"Union Set : set1 set3\n");
+            Debug.Log($"\tset1 == set3 : {d.FindSet(set1) == d.FindSet(set3)}\n");
+
+            d.UnionSet(set3, set4);
+            Debug.Log($"Union Set : set3 set4\n");
+            Debug.Log($"\tset3 == set4 : {d.FindSet(set3) == d.FindSet(set4)}\n");
+
+            Debug.Log($"\tset1 == set4 : {d.FindSet(set1) == d.FindSet(set4)}\n");
+        }

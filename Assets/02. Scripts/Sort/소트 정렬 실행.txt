@@ -1,0 +1,28 @@
+int[] dataSet = { 6, 4, 2, 3, 1, 5 };
+
+
+            Debug.Log($"DataSet: {{ {dataSet[0]}, {dataSet[1]}, {dataSet[2]}, {dataSet[3]}, {dataSet[4]}, {dataSet[5]} }} \n");
+
+            BubbleSort(dataSet, dataSet.Length);
+            Debug.Log("정렬");
+
+            Debug.Log($"DataSet: {{ {dataSet[0]}, {dataSet[1]}, {dataSet[2]}, {dataSet[3]}, {dataSet[4]}, {dataSet[5]} }} \n");
+========================================================================
+int[] dataSet = { 6, 4, 2, 3, 1, 5 };
+
+
+            Debug.Log($"DataSet: {{ {dataSet[0]}, {dataSet[1]}, {dataSet[2]}, {dataSet[3]}, {dataSet[4]}, {dataSet[5]} }} \n");
+
+            InsertionSort(dataSet, dataSet.Length);
+            Debug.Log("정렬");
+
+            Debug.Log($"DataSet: {{ {dataSet[0]}, {dataSet[1]}, {dataSet[2]}, {dataSet[3]}, {dataSet[4]}, {dataSet[5]} }} \n");
+========================================================================
+int[] dataSet = { 6, 4, 2, 3, 1, 5 };
+
+            Debug.Log($"DataSet: {{ {dataSet[0]}, {dataSet[1]}, {dataSet[2]}, {dataSet[3]}, {dataSet[4]}, {dataSet[5]} }} \n");
+
+            QuickSort(dataSet, 0, dataSet.Length - 1);
+            Debug.Log("정렬");
+
+            Debug.Log($"DataSet: {{ {dataSet[0]}, {dataSet[1]}, {dataSet[2]}, {dataSet[3]}, {dataSet[4]}, {dataSet[5]} }} \n");

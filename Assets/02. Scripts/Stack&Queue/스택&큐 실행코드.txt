@@ -1,0 +1,112 @@
+AS_ArrayStack<int> stack = new AS_ArrayStack<int>(10);
+
+        private void Start()
+        {
+            stack.PushData(3);
+            stack.PushData(37);
+            stack.PushData(11);
+            stack.PushData(12);
+
+            Debug.Log($"Capacity: {stack.stackSize}\tSize: {stack.currentTopIndex}\tTop: {stack.GetTopData()}\n");
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (stack.IsEmpty())
+                    break;
+
+                int popedData = stack.PopData();
+
+                if (!stack.IsEmpty())
+                {
+                    Debug.Log($"Poped: {popedData}\t Current Top: {stack.GetTopData()}\n");
+                }
+                else
+                {
+                    Debug.Log($"Poped: {popedData}\t Stack is Empty\n");
+                }
+            }
+        }
+========================================================================
+LinkedListStack<string> s = new LinkedListStack<string>();
+        
+        void Start()
+        {
+            int i = 0;
+            int count = 0;
+            Node<string> pop = null;
+
+            s.PushData(s.CreateNewNode("abc"));
+            s.PushData(s.CreateNewNode("def"));
+            s.PushData(s.CreateNewNode("efg"));
+            s.PushData(s.CreateNewNode("hij"));
+
+            Debug.Log($"Size: {s._nodeCurrentCount}\tTop: {s.GetTopData()}");
+
+            count = s._nodeCurrentCount;
+
+            for (i = 0; i < count; i++)
+            {
+                if (s.IsEmpty())
+                    break;
+
+                string popedData = s.PopData().nodeData;
+
+                if (!s.IsEmpty())
+                {
+                    Debug.Log($"Poped: {popedData}\t Current Top: {s.GetTopData()}\n");
+                }
+                else
+                {
+                    Debug.Log($"Poped: {popedData}\t Stack is Empty\n");
+                }
+            }
+        }
+========================================================================
+CircularQueue<int> q = new CircularQueue<int>(10);
+
+        void Start()
+        {
+            q.Enqueue(1);
+            q.Enqueue(2);
+            q.Enqueue(3);
+            q.Enqueue(4);
+
+            for (int i = 0; i < 3; i++)
+            {
+                Debug.Log($"Dequeue: {q.Dequeue()}\t\tFront: {q._frontIndex}\t\tBack: {q._rearIndex}\n");
+            }
+
+            int k = 100;
+            for(int i = 0; i < 9;i++)
+            {
+                q.Enqueue(k++);
+            }
+
+            Debug.Log($"Capacity: {q._queueCapacity}\t\tCount: {q._currentQueueSize}\n");
+
+            for (int i = 0; i < q._queueCapacity; i++)
+            {
+                Debug.Log($"Dequeue: {q.Dequeue()}\t\tFront: {q._frontIndex}   \tBack: {q._rearIndex}\n");
+            }
+        }
+========================================================================
+LinkedQueue<string> q = new LinkedQueue<string>();
+
+        private void Start()
+        {
+            Node<string> poped; 
+
+            q.Enqueue("abc");
+            q.Enqueue("def");
+            q.Enqueue("efg");
+            q.Enqueue("hij");
+
+            Debug.Log($"Queue Size: {q._currentCount}");
+
+            for(int i = 0 ; i < 4;i++)
+            {
+                poped = q.Dequeue();
+                Debug.Log($"Dequeue: {poped.nodeData}");
+            }
+        }
+========================================================================
