@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 //퀵 정렬(Quick Sort)
 
@@ -26,12 +27,12 @@ namespace Quick.Sort
 
             //하나씩 늘려가며 기준점과 비교
             for (int j = leftIndex + 1; j <= rightIndex; j++)
-            {
+            {                
                 if (dataSet[j] < pivot)
                 {
                     Swap(dataSet, first, j);
                     first++;
-                }
+                }               
             }            
             
             //정렬 후 기준점과 가장 작은 값 교환
@@ -56,18 +57,16 @@ namespace Quick.Sort
             }
         }
 
-
-
         void Start()
         {
-            int[] dataSet = { 5, 1, 6, 4, 8, 3, 7, 9, 2 };
+            int[] dataSet = { 6, 4, 2, 3, 1, 5 };
 
-            //Debug.Log($"DataSet: {{ {dataSet[0]}, {dataSet[1]}, {dataSet[2]}, {dataSet[3]}, {dataSet[4]}, {dataSet[5]} }} \n");
+            Debug.Log($"DataSet: {{ {dataSet[0]}, {dataSet[1]}, {dataSet[2]}, {dataSet[3]}, {dataSet[4]}, {dataSet[5]} }} \n");
 
             QuickSort(dataSet, 0, dataSet.Length - 1);
-            Debug.Log("퀵 정렬\n");
+            Debug.Log("퀵 정렬");
 
-            //Debug.Log($"DataSet: {{ {dataSet[0]}, {dataSet[1]}, {dataSet[2]}, {dataSet[3]}, {dataSet[4]}, {dataSet[5]} }} \n");
+            Debug.Log($"DataSet: {{ {dataSet[0]}, {dataSet[1]}, {dataSet[2]}, {dataSet[3]}, {dataSet[4]}, {dataSet[5]} }} \n");
         }
     }
 }
