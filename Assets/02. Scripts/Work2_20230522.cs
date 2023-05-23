@@ -24,7 +24,7 @@ public class Work2_20230522 : MonoBehaviour
             result = "";
             for (int j = 0; j < i + 1; j++)
             {
-                result += "*";                
+                result += "*";
             }
             Debug.Log($"{result}\n");
         }
@@ -56,7 +56,7 @@ public class Work2_20230522 : MonoBehaviour
     //내려가는 계단 뒤집은 형태
     public void InverseDownStairStar()
     {
-        
+
         for (int i = 0; i < 5; i++)
         {
             string result = "";
@@ -133,7 +133,7 @@ public class Work2_20230522 : MonoBehaviour
         int[] starCount = { 1, 3, 7, 5, 7, 3, 1 };
 
         for (int i = 0; i < 7; i++)
-        {            
+        {
             string result = "";
             int spaceRange = (7 - starCount[i]) / 2;
 
@@ -145,7 +145,7 @@ public class Work2_20230522 : MonoBehaviour
                 }
                 else
                 {
-                    result += "*";                    
+                    result += "*";
                 }
             }
 
@@ -156,30 +156,47 @@ public class Work2_20230522 : MonoBehaviour
     //하트 모양 별 찍기
     public void HeartShapeStarPrint()
     {
-        //각 줄마다 별 개수
-        int[] starCount = { 2, 6, 10, 8, 6, 4, 2 };
-
         //하트 출력 for문
         for (int i = 0; i < 7; i++)
         {
-            string printResult = "";
+            string result = "";
 
             //한줄에 별 위치를 출력 for문
             for (int j = 0; j < 10; j++)
             {
+                if (j < 2 - i && i < 2)
+                {
+                    result += "  ";
+                }
+                else if (j < 8 + i  && i < 2)
+                {
+                    result += "*";
+                }
                 
-                printResult += "*";
 
+                if (j < i - 2 && i >= 2)
+                {
+                    result += "  ";
+                }
+                else if(j < 10 - (i - 2) && i >= 2)
+                {
+                    result += "*";
+                }
+
+
+                
+                
+                
 
             }
-            Debug.Log($"{printResult}\n");
+            Debug.Log($"{result}\n");
         }
     }
 
     //조건: Debug.Log("*") 한줄만 써서 출력
     /*
     숙제.1
-
+    
     *
     **
     ***
