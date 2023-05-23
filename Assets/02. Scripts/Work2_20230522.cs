@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class Work2_20230522 : MonoBehaviour
 
     void Start()
     {
-        TwoDiamondStar();
+        HeartShapeStarPrint();
     }
 
     //내려가는 계단 형식 별
@@ -32,7 +33,6 @@ public class Work2_20230522 : MonoBehaviour
     //올라가는 계단 형식 별
     public void UpStairStar()
     {
-
         for (int i = 0; i < 5; i++)
         {
             string result = "";
@@ -129,14 +129,17 @@ public class Work2_20230522 : MonoBehaviour
     //두개의 묶인 다이아몬드 형태 별
     public void TwoDiamondStar()
     {
-        int range = 3;
+        //한 줄당 찍을 별 개수
+        int[] starCount = { 1, 3, 7, 5, 7, 3, 1 };
+
         for (int i = 0; i < 7; i++)
         {            
             string result = "";
-            
+            int spaceRange = (7 - starCount[i]) / 2;
+
             for (int j = 0; j < 7; j++)
             {
-                if(j < range || 7 - range <= j )
+                if (j < spaceRange || j >= starCount[i] + spaceRange)
                 {
                     result += "  ";
                 }
@@ -145,27 +148,33 @@ public class Work2_20230522 : MonoBehaviour
                     result += "*";                    
                 }
             }
-            if (i % 2 == 0)
-            {
-                range -= 3;
-            }
-            else
-            {
-
-            }
 
             Debug.Log($"{result}\n");
         }
     }
 
-    public void HeartStar()
+    //하트 모양 별 찍기
+    public void HeartShapeStarPrint()
     {
+        //각 줄마다 별 개수
+        int[] starCount = { 2, 6, 10, 8, 6, 4, 2 };
 
+        //하트 출력 for문
+        for (int i = 0; i < 7; i++)
+        {
+            string printResult = "";
+
+            //한줄에 별 위치를 출력 for문
+            for (int j = 0; j < 10; j++)
+            {
+                
+                printResult += "*";
+
+
+            }
+            Debug.Log($"{printResult}\n");
+        }
     }
-
-
-
-
 
     //조건: Debug.Log("*") 한줄만 써서 출력
     /*
