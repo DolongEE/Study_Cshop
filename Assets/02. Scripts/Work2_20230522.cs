@@ -156,43 +156,58 @@ public class Work2_20230522 : MonoBehaviour
     //하트 모양 별 찍기
     public void HeartShapeStarPrint()
     {
-        //하트 출력 for문
+        //하트의 높이
         for (int i = 0; i < 7; i++)
         {
             string result = "";
 
-            //한줄에 별 위치를 출력 for문
-            for (int j = 0; j < 10; j++)
+            //하트
+            for (int j = 0; j < 10; j++) 
             {
-                if (j < 2 - i && i < 2)
-                {
-                    result += "  ";
-                }
-                else if (j < 8 + i  && i < 2)
-                {
-                    result += "*";
-                }
-                
+                int star            = j;
+                int frontSpace      = 2 - i;
+                int backSpace       = 3 + i;
 
-                if (j < i - 2 && i >= 2)
+                //위쪽 하트인지 아래쪽 하트인지 판단
+                bool isTopHeart     = i < 3;
+
+                //하트를 3개의 삼각형으로 나누어 출력 (앞쪽 공백 < 별 < 뒤쪽 공백)
+                bool isfirstTriangle    =  frontSpace     <= star && star <  backSpace;
+                bool isSecondTriangle   =  frontSpace + 5 <= star && star <  backSpace + 5;
+                bool isThirdTriangle    = -frontSpace     <= star && star < -backSpace + 15;
+
+                if (isTopHeart)
                 {
-                    result += "  ";
+                    if (isfirstTriangle)
+                    {
+                        result += "*";
+                    }
+                    else if(isSecondTriangle)
+                    {
+                        result += "*";
+                    }
+                    else
+                    {
+                        result += "  ";
+                    }                    
                 }
-                else if(j < 10 - (i - 2) && i >= 2)
+                else
                 {
-                    result += "*";
+                    result += (isThirdTriangle) ? "*" : "  ";
                 }
-
-
-                
-                
-                
-
             }
             Debug.Log($"{result}\n");
         }
     }
 
+    class Point
+    {
+        public int x , y;
+        public void Print()
+        {
+
+        }
+    };
     //조건: Debug.Log("*") 한줄만 써서 출력
     /*
     숙제.1
